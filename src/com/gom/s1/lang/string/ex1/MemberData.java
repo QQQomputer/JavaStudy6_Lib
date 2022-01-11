@@ -25,14 +25,15 @@ public class MemberData {
 	}
 	
 	public MemberDTO[] test2() {
-		MemberDTO mDTO = new MemberDTO();
+		MemberDTO mDTO=null;
 		String[] result = data.split("-");
-		System.out.println(result[0]);
+
 		MemberDTO[] memberDTO= new MemberDTO[result.length/4];
 		for(int i=0;i<result.length;i++) {
 			result[i]=result[i].trim();			
 //			System.out.println(result[i]);
 			if(i%4==0) {
+				mDTO = new MemberDTO();
 				mDTO.setId(result[i]);
 			}else if(i%4==1) {
 				mDTO.setPw(result[i]);
@@ -40,7 +41,8 @@ public class MemberData {
 				mDTO.setName(result[i]);
 			}else if(i%4==3) {   
 				mDTO.setEmail(result[i]);				
-				memberDTO[i/4]= mDTO;				
+				memberDTO[i/4]=mDTO;
+			
 			}			
 		}
 		return memberDTO;
